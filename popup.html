@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaze Glass Control</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🕶️ Gaze Glass Control</h1>
+        </div>
+
+        <!-- Status Section -->
+        <div class="section status-section">
+            <div class="info-row">
+                <strong>Título:</strong> <span id="titulo" class="value">Cargando...</span>
+            </div>
+            <div class="info-row">
+                <strong>Scroll Y:</strong> <span id="scroll" class="value">Cargando...</span>
+            </div>
+        </div>
+
+
+         <!-- Gaze Data -->
+        <div class="section">
+            <h3>📍 Gaze</h3>
+            <div id="status" class="status-indicator">Desconectado</div>
+            <div id="gaze" class="gaze-display">
+                <div class="coordinate">
+                    <span class="label">X:</span> <span id="x" class="coord-value">-</span>
+                </div>
+                <div class="coordinate">
+                    <span class="label">Y:</span> <span id="y" class="coord-value">-</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Connection Controls -->
+        <div class="section">
+            <h3>🔌 Conexión</h3>
+            <div class="button-group">
+                <button id="connectGlasses" class="btn btn-primary">Conectar Gafas</button>
+                <button id="disconnectGlasses" class="btn btn-danger">Desconectar</button>
+            </div>
+        </div>
+
+
+
+        <!-- Stream Controls -->
+        <div class="section">
+            <h3>📹 Stream</h3>
+            <div class="button-group">
+                <button id="openCalibration" class="btn btn-secondary">Calibrar Gafas</button>
+                <button id="startStream" class="btn btn-success">Iniciar Stream</button>
+                <button id="stopStream" class="btn btn-warning">Detener Stream</button>
+            </div>
+        </div>
+
+        <!-- Recording Controls -->
+        <div class="section">
+            <h3>🎥 Grabación</h3>
+            <div class="button-group">
+                <button id="startRecording" class="btn btn-record">Empezar a grabar</button>
+                <button id="stopRecording" class="btn btn-stop" >Parar de grabar</button>
+            </div>
+        </div>
+
+       
+        <!-- Export Controls -->
+        <div class="section">
+            <h3>💾 Exportar</h3>
+            <div class="button-group">
+                <button id="exportJson" class="btn btn-info">Descargar JSON</button>
+                <button id="descargarCaptura" class="btn btn-info">Descargar Captura</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

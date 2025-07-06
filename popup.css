@@ -1,0 +1,179 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1e1e2e 0%, #2a2a3a 100%);
+    color: white;
+    width: 500px;
+    min-height: 500px;
+    overflow-x: hidden;
+}
+
+.container {
+    padding: 12px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header h1 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #64b5f6;
+    text-shadow: 0 0 8px rgba(100, 181, 246, 0.3);
+    margin: 0;
+}
+
+.section {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.section h3 {
+    font-size: 12px;
+    margin-bottom: 8px;
+    color: #e3f2fd;
+    font-weight: 500;
+    margin-top: 0;
+}
+
+.status-section {
+    background: rgba(33, 150, 243, 0.1);
+    border-color: rgba(33, 150, 243, 0.3);
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+    font-size: 11px;
+}
+
+.info-row:last-child {
+    margin-bottom: 0;
+}
+
+.value {
+    color: #64b5f6;
+    font-weight: 500;
+    padding: 1px 6px;
+    background: rgba(100, 181, 246, 0.1);
+    border-radius: 3px;
+    font-size: 11px;
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.btn {
+    flex: 1;
+    min-width: 80px;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #2196f3, #1976d2);
+    color: white;
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #9c27b0, #7b1fa2);
+    color: white;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #4caf50, #388e3c);
+    color: white;
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, #ff9800, #f57c00);
+    color: white;
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #f44336, #d32f2f);
+    color: white;
+}
+
+.btn-record {
+    background: linear-gradient(135deg, #e91e63, #c2185b);
+    color: white;
+}
+
+.btn-stop {
+    background: linear-gradient(135deg, #607d8b, #455a64);
+    color: white;
+}
+
+.btn-info {
+    background: linear-gradient(135deg, #00bcd4, #0097a7);
+    color: white;
+}
+
+
+
+.status-indicator {
+    background: rgba(168, 7, 255, 0.2);
+    color: #078bff;
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 8px;
+    border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.gaze-display {
+    display: flex;
+    justify-content: space-around;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    padding: 8px;
+}
+
+.coordinate {
+    text-align: center;
+}
+
+.label {
+    font-size: 10px;
+    color: #90caf9;
+    font-weight: 500;
+}

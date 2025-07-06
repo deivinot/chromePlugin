@@ -1,0 +1,26 @@
+{
+    "manifest_version" : 3,
+    "name" : "Visualizador Tobii Pro Glasses 3",
+    "version": "1.2",
+    "description": "Este proyecto integra un 'eye tracker' de las gafas Tobii Pro Glasses 3 para generar visualizadores gráficos de las páginas web accedidas.",
+    "permissions": ["storage", "scripting", "activeTab", "tabGroups", "tabs", "downloads" ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "action": {
+      "default_popup": "popup.html"
+    },
+    "host_permissions": ["http://*/*","https://*/*"],
+     "icons": {
+      "16": "icons/gafas_resized_16.png",
+      "48": "icons/gafas_resized_48.png",
+      "128": "icons/gafas_resized_128.png"
+      },
+    "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["html2canvas.min.js", "content.js", "perspective-transform.min.js", "heatmap.min.js"],
+      "run_at": "document_idle"
+    }
+    ]
+}
