@@ -1,3 +1,4 @@
+// Botones de calibración
 const calibrationPoints = {
   'top-left': null,
   'top-right': null,
@@ -38,6 +39,7 @@ window.addEventListener('DOMContentLoaded', () => {
   calibrationStatus.style.color = '#FFFFFF';  // Texto en blanco
   calibrationContainer.appendChild(calibrationStatus);
 
+  // Función de calibración que llama al endpoint
   calibrateButton.addEventListener("click", () => {
     calibrationStatus.textContent = "Calibrando...";
 
@@ -84,13 +86,12 @@ window.addEventListener('DOMContentLoaded', () => {
     console.warn("WebSocket cerrado desde calibration.js");
   };
 
-  // Crear botones para guardar los puntos de calibración
+  // Creacion de botones para guardar los puntos de calibración
   const corners = ['top-left', 'top-right', 'bottom-left', 'bottom-right'];
   corners.forEach(corner => {
     const point = document.createElement('div');
     point.classList.add('corner-point', `corner-${corner}`);
 
-    // Si es una esquina superior, le aplicamos un margen top extra
     if (corner === 'top-left' || corner === 'top-right') {
       point.style.top = '58px'; 
     }
@@ -100,6 +101,8 @@ window.addEventListener('DOMContentLoaded', () => {
     const button = document.createElement('button');
     button.textContent = `Marcar ${corner}`;
     button.classList.add('calibrate-button', `btn-${corner}`);
+
+    // Función para guardar cada punto en el 'local storage' de la extensión
     button.addEventListener('click', () => {
       calibrationPoints[corner] = { ...currentGazePosition };
       console.log(`Posición guardada para ${corner}:`, calibrationPoints[corner]);
