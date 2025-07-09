@@ -215,32 +215,3 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 });
 
 
-
-
-
-/*
-
-const srcCorners = [
-  {x: 0.2, y: 0.6},  // esquina sup izq en gafa normalizada
-  {x: 0.8, y: 0.6},  // sup der
-  {x: 0.8, y: 0.9},  // inf der
-  {x: 0.2, y: 0.9}   // inf izq
-];
-
-const dstCorners = [
-  {x: 0, y: 0},                  // esquina sup izq en píxeles (pantalla)
-  {x: anchoPantalla, y: 0},     // sup der
-  {x: anchoPantalla, y: altoPantalla}, // inf der
-  {x: 0, y: altoPantalla}        // inf izq
-];
-
-const transform = PerspT(srcCorners, dstCorners);
-
-// Luego, para cada punto de la gafa (normalizado):
-const puntoGafa = {x: gazeX, y: gazeY};
-const puntoPantalla = transform(puntoGafa.x, puntoGafa.y);
-
-*/
-
-
-//
