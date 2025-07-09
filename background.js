@@ -3,9 +3,7 @@ let isRecording = false;
 let scrollY = 0;
 let heatmapData =[]
 
-  
-
-
+// Función para mandar el estado a la interfaz
 function sendStatus(statusText, color = "black") {
   chrome.runtime.sendMessage({
     type: "status-update",
@@ -14,6 +12,7 @@ function sendStatus(statusText, color = "black") {
   });
 }
 
+// Función para exportar el mapa de calor como imagen
 function exportHeatmapData() {
   chrome.storage.local.get(["calibrationPoints"], (result) => {
     const calibrationPoints = result.calibrationPoints || {};
@@ -41,6 +40,7 @@ function exportHeatmapData() {
 }
 
 
+// Función para obtener los puntos de calibración y formatearlos junto los datos de la mirada
 function getData() {
   return new Promise((resolve) => {
     chrome.storage.local.get(["calibrationPoints"], (result) => {
@@ -54,8 +54,7 @@ function getData() {
 }
 
 
-
-
+// Manejador de eventos
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   switch (message.type) {
     case "connect-glasses":
