@@ -4,7 +4,7 @@ let capturaPrevia = null;
 let anchoPantalla = null;
 let altoPantalla = null;
 
-// Gestionar scroll
+// Obtener valor de scroll del sitio web
 window.addEventListener("scroll", () => {
   if (port) {
     port.postMessage({ scrollY: window.scrollY });
@@ -12,7 +12,7 @@ window.addEventListener("scroll", () => {
   chrome.runtime.sendMessage({ type: "update-scroll", scrollY: window.scrollY });
 });
 
-// Comunicación con script
+// Transmitir la información del scroll
 chrome.runtime.onConnect.addListener((p) => {
   port = p;
   port.postMessage({ scrollY: window.scrollY });
@@ -22,7 +22,7 @@ chrome.runtime.onConnect.addListener((p) => {
   });
 });
 
-// Hacemos la captura tras cargar (tras 1 segundo)
+// Hacemr la captura tras cargar (tras 5 segundos)
 window.addEventListener('load', () => {
 
   setTimeout(() => {
@@ -43,7 +43,7 @@ window.addEventListener('load', () => {
   }, 5000);
 });
 
-// Revisar que la q es activada
+// Revisar que la q es activada para para grabación
 document.addEventListener("keydown", (event) => {
   if (event.key === "q" && !event.ctrlKey && !event.altKey && !event.metaKey) {
     console.log("pulsa Q")
@@ -61,7 +61,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       return;
     }
 
-    // Calculamos la matriz de transformación perspectiva
     const srcCorners = [
       calibrationPoints["top-left"].x, calibrationPoints["top-left"].y,
       calibrationPoints["top-right"].x, calibrationPoints["top-right"].y,
@@ -76,6 +75,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       0, altoPantalla
     ];
 
+    
     const perspT = new PerspT(srcCorners, dstCorners);
     const image = new Image();
     image.src = capturaPrevia;
@@ -105,7 +105,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         }
       });
 
-      // Aplicamos la transformación a cada punto
+      // Aplicar la transformación a cada punto respecto a la ROI
       const heatmapPoints = points.map(p => {
         const [realX, realY] = perspT.transform(p.x, p.y);
         return {
@@ -121,10 +121,10 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
       const finalImage = finalCanvas.toDataURL('image/png');
 
-      // Enviamos la imagen final al background para descargar
+      // Enviar la imagen final al background para descargar
       chrome.runtime.sendMessage({ type: 'captura-final', dataUrl: finalImage });
 
-      // Limpiamos heatmap
+      // Limpiar heatmap para que no aparezca en pantalla
       heatmap._renderer.canvas.width = 0;
       heatmap._renderer.canvas.height = 0;
       ctx.clearRect(0, 0, finalCanvas.width, finalCanvas.height);
